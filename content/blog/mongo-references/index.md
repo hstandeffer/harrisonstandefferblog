@@ -6,6 +6,8 @@ description: "Simplifying Express API queries with Mongoose"
 
 If you're used to traditional SQL database engines like MySQL, you will surely have come across the **JOIN** keyword, which allows you to combine data from multiple tables. However, with NoSQL databases like MongoDB, joins are not an option, since they are, by definition, not relational. In this post, we'll look at how you can achieve a similar result using Mongoose, a Node.js module for MongoDB.
 
+We'll demonstrate this through an example of a user on a blogging platform who can have many blog posts, and we'll explore a way to relate them similar to the way you would in a SQL database.
+
 ### Defining the Mongoose Models
 
 Let's assume you have two Mongoose models, a Blog model:
