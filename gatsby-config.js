@@ -53,6 +53,7 @@ module.exports = {
         trackingId: `UA-170908270-1`,
       },
     },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
