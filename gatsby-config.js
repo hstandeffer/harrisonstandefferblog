@@ -3,13 +3,10 @@ module.exports = {
     title: `Harrison Standeffer`,
     author: {
       name: `Harrison Standeffer`,
-      summary: `Sharing my thoughts in web development`,
+      summary: `Sharing what I've learned about web development. Focusing on React, Node, and other modern frameworks.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
-    social: {
-      twitter: `hstandeffer`,
-    },
+    description: `Harrison Standeffer's web development blog`,
+    siteUrl: `https://www.harrisonstandeffer.com`,
   },
   plugins: [
     {
@@ -53,7 +50,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-170908270-1`,
       },
     },
     `gatsby-plugin-feed`,

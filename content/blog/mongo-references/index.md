@@ -1,12 +1,14 @@
 ---
-title: How to reference collections with Mongoose
-date: "2020-06-24T18:00:00Z"
-description: "Simplifying Express API queries with Mongoose"
+title: How to Reference Other Collections in Mongoose
+date: "2020-06-26T00:00:00Z"
+description: "Exploring how to simulate a SQL-like 'JOIN' in NoSQL databases with Mongoose, Express, and Node"
 ---
 
-If you're used to traditional SQL database engines like MySQL, you will surely have come across the **JOIN** keyword, which allows you to combine data from multiple tables. However, with NoSQL databases like MongoDB, joins are not an option, since they are, by definition, not relational. In this post, we'll look at how you can achieve a similar result using Mongoose, a Node.js module for MongoDB.
+If you're used to traditional SQL database engines like MySQL, you will surely have come across the **JOIN** keyword, which allows you to combine data from multiple tables. However, with NoSQL databases like MongoDB, joins are not an option, since they are, by definition, not relational.
 
-We'll demonstrate this through an example of a user on a blogging platform who can have many blog posts, and we'll explore a way to relate them similar to the way you would in a SQL database.
+MongoDB does, however, have a similar "join-like" functionality through the usage of the ```$lookup``` operator, but in this post, we'll look at a more intuitive way to "join" data from different collections using Mongoose, a Node.js module for MongoDB. 
+
+We'll demonstrate this through an example of a user on a blogging platform who can create many blog posts. 
 
 ### Defining the Mongoose Models
 
@@ -34,6 +36,9 @@ const userSchema = mongoose.Schema({
 
 module.exports = mongoose.model('User', userSchema)
 ```
+<br />
+
+After defining the Mongoose collection models, we'll move onto defining the API route handlers, using Express.
 
 ### Defining the Express Routers
 
@@ -100,8 +105,7 @@ module.exports = userRouter
 ```
 <br />
 
-It's worth nothing we used the bcrypt library to hash the password, as storing a password in plain text is never a good idea. You can read up on its documentation [here](https://www.npmjs.com/package/bcrypt). Both routers are also be exported so they can be brought into the main Express app file to handle different API URL addresses.
-
+It's worth nothing we used the bcrypt library to hash the password, as storing a password in plain text is never a good idea. You can read up on its documentation [here](https://www.npmjs.com/package/bcrypt), since bcrypt could be a separate post of its own. Both routers are also exported so they can be brought into the main Express app file so the API can handle different URL addresses.
 
 After doing this, you can access your users API endpoint by navigating to the URL (e.g. example.com/api/users) where they will be returned in JSON format. You would see results similar to this:
 ```json
@@ -178,7 +182,7 @@ blogRouter.post('/', async (request, response) => {
 ```
 <br />
 
-Here, we import the User model then extract the user's ID from the body of the request. Using Mongoose's findById method, we find the user who created the blog and add that user's id to the new blog object to create a reference back to the user. Just like before, we then save the blog object, but this time we use the JavaScript concat method to also add the newly-created blog object to the user object before finally saving the updated user.
+Here, we first import the User model then extract the user's ID from the body of the request. Using Mongoose's findById method, we find the user who created the blog and add that user's ID to the new blog object to create a reference back to the user. Just like before, we then save the blog object, but this time we use the JavaScript concat method to also add the newly-created blog object to the user object before finally saving the updated user.
 
 Now, **finally** we can make the last addition to the userRouter to populate the blogs of each user:
 ```javascript
@@ -191,9 +195,9 @@ usersRouter.get('/', async (request, response) => {
 ```
 <br />
 
-Since we earlier defined the refs in our Mongoose models, we can use Mongoose's **populate** method, to load the details of each blog post per user. By passing the string "*blogs*", we tell Mongoose that we want it to look for the object with the name *blogs* and then populate it with the Blog 
+Since we earlier defined the refs in our Mongoose models, we can use Mongoose's **populate** method, to load the details of each blog post per user. By passing the string "*blogs*", we tell Mongoose that we want it to look for the object with the name *blogs* and then populate it with data from the Blog model.
 
-Now, the JSON data returned at the /api/users endpoint has the blog data of each user populated and displayed, all in one request:
+Now, the JSON data returned at the /api/users endpoint also returns all of the blog data for each user and is populated and displayed all in one request:
 ```json
 [
   {
@@ -234,3 +238,31 @@ Now, the JSON data returned at the /api/users endpoint has the blog data of each
 ]
 ```
 <br />
+
+It's important to understand how the Mongoose populate method actually works. From the documentation: "Population is the process of automatically replacing the specified paths in the document with document(s) from other collection(s)." 
+
+In our scenario, when we previously concatenated the blog object to the user, only the blog ID is actually saved to the user collection. The populate method then handles returning the actual blog data based on the ID we have saved. For example, here's what the /api/users endpoint would return **\*without\*** adding the populate method to the userRouter:
+```json
+[
+  {
+    "username": "jdoe",
+    "name": "John Doe",
+    "id": "5edc29c141857a3a0c3577ae",
+    "blogs": [
+      "5edc29c241857a3a0c3577dd",
+      "5edc29c241857a3a0c3577de"
+    ]
+  },
+  {
+    "username": "jdoe2",
+    "name": "Jane Doe",
+    "id": "5edc29c141857a3a0c3577af",
+    "blogs": [
+      "5edc29c241857a3a0c3577ee"
+    ]
+  }
+]
+```
+
+### Conclusion
+This post should have given you a good introduction on how to effectiveley "join" two MongoDB collections into returning one result set using Express.js and Node.js with Mongoose.
