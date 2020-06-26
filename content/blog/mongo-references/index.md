@@ -265,4 +265,4 @@ In our scenario, when we previously concatenated the blog object to the user, on
 ```
 
 ### Conclusion
-This post should have given you a good introduction on how to effectiveley "join" two MongoDB collections into returning one result set using Express.js and Node.js with Mongoose.
+This post should have given you a good introduction on how to effectively "join" two MongoDB collections into returning one result set using Express.js and Node.js with Mongoose.
