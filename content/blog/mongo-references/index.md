@@ -6,7 +6,7 @@ description: "Exploring how to simulate a SQL-like 'JOIN' in NoSQL databases wit
 
 If you're used to traditional SQL database engines like MySQL, you will surely have come across the **JOIN** keyword, which allows you to combine data from multiple tables. However, with NoSQL databases like MongoDB, joins are not an option, since they are, by definition, not relational.
 
-MongoDB does, however, have a similar "join-like" functionality through the usage of the ```$lookup``` operator, but in this post, we'll look at a more intuitive way to "join" data from different collections using Mongoose, a Node.js module for MongoDB. 
+MongoDB does, however, have a similar "join-like" functionality through the usage of the `$lookup` operator, but in this post, we'll look at a more intuitive way to "join" data from different collections using Mongoose, a Node.js module for MongoDB. 
 
 We'll demonstrate this through an example of a user on a blogging platform who can create many blog posts. 
 
@@ -182,7 +182,7 @@ blogRouter.post('/', async (request, response) => {
 ```
 <br />
 
-Here, we first import the User model then extract the user's ID from the body of the request. Using Mongoose's findById method, we find the user who created the blog and add that user's ID to the new blog object to create a reference back to the user. Just like before, we then save the blog object, but this time we use the JavaScript concat method to also add the newly-created blog object to the user object before finally saving the updated user.
+Here, we first import the User model then extract the user's ID from the body of the request. Using Mongoose's findById method, we find the user who created the blog and add that user's ID to the new blog object to create a reference back to the user. Just like before, we then save the blog object, but this time we use the JavaScript [concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method to also add the newly-created blog object to the user object before finally saving the updated user.
 
 Now, **finally** we can make the last addition to the userRouter to populate the blogs of each user:
 ```javascript
@@ -195,7 +195,7 @@ usersRouter.get('/', async (request, response) => {
 ```
 <br />
 
-Since we earlier defined the refs in our Mongoose models, we can use Mongoose's **populate** method, to load the details of each blog post per user. By passing the string "*blogs*", we tell Mongoose that we want it to look for the object with the name *blogs* and then populate it with data from the Blog model.
+Since we earlier defined the refs in our Mongoose models, we can now use Mongoose's [**populate**](https://mongoosejs.com/docs/populate.html) method, to load the details of each blog post per user. By passing the string "*blogs*", we tell Mongoose that we want it to look for the object with the name *blogs* and then populate it with data from the Blog model.
 
 Now, the JSON data returned at the /api/users endpoint also returns all of the blog data for each user and is populated and displayed all in one request:
 ```json
