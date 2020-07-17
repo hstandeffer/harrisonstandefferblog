@@ -5,7 +5,7 @@ module.exports = {
       name: `Harrison Standeffer`,
       summary: `Sharing what I've learned about web development. Focusing on React, Node, and other modern frameworks.`,
     },
-    description: `Harrison Standeffer's web development blog`,
+    description: `Modern JavaScript and Web Development Guides and Tutorials`,
     siteUrl: `https://www.harrisonstandeffer.com`,
   },
   plugins: [

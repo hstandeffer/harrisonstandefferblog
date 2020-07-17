@@ -105,7 +105,7 @@ module.exports = userRouter
 ```
 <br />
 
-It's worth nothing we used the bcrypt library to hash the password, as storing a password in plain text is never a good idea. You can read up on its documentation [here](https://www.npmjs.com/package/bcrypt), since bcrypt could be a separate post of its own. Both routers are also exported so they can be brought into the main Express app file so the API can handle different URL addresses.
+It's worth nothing we used the [bcrypt library](https://www.npmjs.com/package/bcrypt) to hash the password, as storing a password in plain text is never a good idea. We won't get into more of byrypt, since it could easily be a separate post of its own. Both routers are also exported so they can be brought into the main Express app file so the API can handle different URL addresses.
 
 After doing this, you can access your users API endpoint by navigating to the URL (e.g. example.com/api/users) where they will be returned in JSON format. You would see results similar to this:
 ```json
