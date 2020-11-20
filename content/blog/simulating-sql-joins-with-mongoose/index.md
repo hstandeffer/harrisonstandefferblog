@@ -1,7 +1,7 @@
 ---
-title: How to Reference Other Collections in Mongoose
+title: Referencing Documents in Other Collections with Mongoose
 date: "2020-06-26T00:00:00Z"
-description: "Exploring how to simulate a SQL-like 'JOIN' in NoSQL databases with Mongoose, Express, and Node"
+description: "How to simulate a SQL-like 'JOIN' in NoSQL databases with Mongoose's 'populate' method"
 ---
 
 If you're used to traditional SQL database engines like MySQL, you will surely have come across the **JOIN** keyword, which allows you to combine data from multiple tables. However, with NoSQL databases like MongoDB, joins are not an option, since they are, by definition, not relational.

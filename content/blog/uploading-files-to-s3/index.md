@@ -1,14 +1,14 @@
 ---
 title: Upload Files to AWS S3 with Multer
 date: "2020-11-19T00:00:00Z"
-description: "Quickly upload files to an S3 bucket with React, Node and Express"
+description: "Quickly upload files to an S3 bucket with React, Node and Express using the Multer file upload middleware"
 ---
 
 ### Introduction
 
-I have been working on a side project that I deployed with Heroku, but needed a way to store file uploads, since Heroku servers boot with a clean filesystem each deploy. I chose to use an AWS S3 bucket to host the static assets, so we'll focus on how to upload to your own bucket using a middleware called Multer.
+I recently deployed a side project with Heroku, but needed a way to store file uploads, since Heroku servers boot with a clean filesystem each deploy. I chose to use an AWS S3 bucket to host the static assets, so we'll focus on how to upload to your own bucket using a middleware called Multer.
 
-I won't go into too much detail on how to create and configure an AWS S3 bucket, as there are many great guides out there, as well as the [Amazon official docs guide](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html). You will also need to create an AWS IAM user and give it S3 permissions. The easiest method (ok for prototyping) is to go to the AWS IAM dashboard, add a new user, and click "attach existing policies directly", then search for "AmazonS3FullAccess" and create the user.
+I won't go into too much detail on how to create and configure an AWS S3 bucket, as there are many great guides out there, as well as the [Amazon official docs guide](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html). You will also need to create an AWS IAM user and give it S3 permissions. The easiest method (okay for prototyping) is to go to the AWS IAM dashboard, add a new user, and click "attach existing policies directly", then search for "AmazonS3FullAccess" and attach it directly to the user.
 
 ### Create a Node App
 
@@ -30,11 +30,11 @@ npm install express aws-sdk body-parser multer multer-s3 dotenv
 ```
 <br />
 
-- AWS SDK: the official AWS SDK for Node.js backends
-- Multer: Node.js middleware for handling file uploads
-- Multer S3: Integration for Multer to directly upload to S3 bucket
-- Body Parser: parses incoming requests bodies into a property available on the request object
-- Dotenv: allows you to store protected environment variables
+- **AWS SDK**: the official AWS SDK for Node.js backends
+- **Multer**: Node.js middleware for handling file uploads
+- **Multer S3**: Integration for Multer to directly upload to S3 bucket
+- **Body Parser**: parses incoming requests bodies into a property available on the request object
+- **Dotenv**: allows you to store protected environment variables
 
 ### Create Server to Handle File Uploads
 
@@ -95,7 +95,6 @@ app.listen(3001, () => {
     console.log('App listening on port 3001!')
 })
 ```
-<br />
 
 ### Frontend React Form
 
@@ -145,4 +144,6 @@ You should now be able to select and upload a file and if everything goes as pla
 
 ### Conclusion
 
-The multer middleware makes it easy to upload data to your own Express backend, and the S3 extension of it drastically simplifies the process of uploading directly to your own bucket. Hopefully this will get you started if you need to host static assets separately on your next web project.
+The multer middleware makes it easy to upload data to your own Express backend, and the multer-s3 extension of it drastically simplifies the process of uploading files directly to your own bucket.
+
+Hopefully this will get you started if you need to host static assets separately on your next web project.

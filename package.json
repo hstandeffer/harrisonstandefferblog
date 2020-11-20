@@ -1,11 +1,11 @@
 {
   "name": "harrison-standeffer-blog",
   "private": false,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Harrison Standeffer's Dev Blog",
   "version": "0.1.0",
   "author": "Harrison Standeffer",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/hstandeffer/harrisonstandefferblog/issues"
   },
   "dependencies": {
     "gatsby": "^2.23.11",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "prettier": "2.0.4"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/hstandeffer/harrisonstandefferblog#readme",
   "keywords": [
     "gatsby"
   ],
@@ -47,7 +47,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/hstandeffer/harrisonstandefferblog.git"
   },
   "scripts": {
     "build": "gatsby build",

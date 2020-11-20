@@ -3,7 +3,7 @@ module.exports = {
     title: `Harrison Standeffer`,
     author: {
       name: `Harrison Standeffer`,
-      summary: `Sharing what I've learned about web development. Focusing on React, Node, and other modern frameworks.`,
+      summary: `Sharing web development tips I've learned. Focusing on React, Node, and other modern frameworks.`,
     },
     description: `Modern JavaScript and Web Development Guides and Tutorials`,
     siteUrl: `https://www.harrisonstandeffer.com`,
