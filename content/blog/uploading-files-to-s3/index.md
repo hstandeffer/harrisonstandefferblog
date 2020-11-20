@@ -2,6 +2,7 @@
 title: Upload Files to AWS S3 with Multer
 date: "2020-11-19T00:00:00Z"
 description: "Quickly upload files to an S3 bucket with React, Node and Express using the Multer file upload middleware"
+tags: ['aws', 'react', 'express']
 ---
 
 ### Introduction

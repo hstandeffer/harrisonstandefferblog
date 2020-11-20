@@ -1,5 +1,5 @@
 html {
-  background-color: #E1EDE3;
+  background-color: #e3f0f6;
 }
 
 .gatsby-highlight-code-line {
@@ -10,4 +10,89 @@ html {
   padding-right: 1em;
   padding-left: 0.75em;
   border-left: 0.25em solid #f99;
+}
+
+.container {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.3125rem;
+  padding-right: 1.3125rem;
+}
+
+.navbar {
+  background: white;
+  margin: 0 auto;
+  padding: 1.3125rem 0;
+}
+
+.main {
+  padding-top: 2.625rem;
+  padding-bottom: 2.625rem;
+}
+
+.brand {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+
+.brand > a {
+  color: black;
+}
+
+.nav-link {
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+.nav-link > a {
+  color: black;
+  font-size: 1.25rem;
+  box-shadow: none;
+}
+
+.subheading {
+  color: #343a40;
+  margin: 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 3.5px solid #343a40;
+}
+
+.post-heading {
+  margin-top: 2.625rem;
+  margin-bottom: 0.4375rem;
+  font-size: 1.25rem;
+}
+
+.post-link {
+  box-shadow: none;
+}
+
+.flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  margin-right: 0.5rem;
+  color: #4a4a4a;
+}
+
+.tag {
+  box-shadow: none;
+  font-size: 0.75rem;
+  text-decoration: none;
+  background: #a2c6f1;
+  margin: 0.25rem;
+  padding: 0.35rem;
+  border-radius: 4px;
+  color: black
 }

@@ -10,10 +10,9 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location}>
       <SEO title="All posts" />
-      <h2 className="subheading">Recent Posts</h2>
+      <h2 className="subheading">All Posts</h2>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
-        const tags = node.frontmatter.tags
         return (
           <article key={node.fields.slug}>
             <header>
@@ -22,12 +21,7 @@ const BlogIndex = ({ data, location }) => {
                   {title}
                 </Link>
               </h3>
-              <div className="flex">
-                <small className="date">{node.frontmatter.date}</small>
-                {tags ? tags.map((tag) => (
-                  <Link className="tag" key={tag}  to={`/tags/${tag}`}>{tag}</Link>
-                )) : null}
-              </div>
+              <small className="date">{node.frontmatter.date}</small>
             </header>
             <section>
               <p
@@ -63,7 +57,6 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
-            tags
           }
         }
       }

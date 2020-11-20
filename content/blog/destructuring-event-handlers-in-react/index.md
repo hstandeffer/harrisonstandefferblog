@@ -2,6 +2,7 @@
 title: Simplifying Input Event Handlers in React
 date: "2020-07-17T00:00:00Z"
 description: "Learn how to dynamically handle multiple input events with much cleaner, easy-to-read syntax using functional React components"
+tags: ['react']
 ---
 
 While there's certainly still support for class components with React, most people are starting to exclusively use functional components and with [React hooks](https://reactjs.org/docs/hooks-intro.html), justification for using class components is diminishing. Despite this, certain React principles may still feel more natural and practical if you're used to class components.
