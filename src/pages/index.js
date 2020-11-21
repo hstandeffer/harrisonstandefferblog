@@ -9,7 +9,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location}>
-      <SEO title="All posts" />
+      <SEO title="Modern JavaScript/React Tips" />
       <h2 className="subheading">Recent Posts</h2>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
