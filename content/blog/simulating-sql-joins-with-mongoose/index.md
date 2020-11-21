@@ -5,6 +5,8 @@ description: "How to simulate a SQL-like 'JOIN' in NoSQL databases with Mongoose
 tags: ['mongoose', 'react', 'express']
 ---
 
+### Introduction
+
 If you're used to traditional SQL database engines like MySQL, you will surely have come across the **JOIN** keyword, which allows you to combine data from multiple tables. However, with NoSQL databases like MongoDB, joins are not an option, since they are, by definition, not relational.
 
 MongoDB does, however, have a similar "join-like" functionality through the usage of the `$lookup` operator, but in this post, we'll look at a more intuitive way to "join" data from different collections using Mongoose, a Node.js module for MongoDB. 
