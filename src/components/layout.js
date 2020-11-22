@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 import { scale } from "../utils/typography"
+import DarkModeToggle from "./Toggle/DarkModeToggle"
 
 const Layout = ({ children }) => {
   let header = (
@@ -16,6 +17,7 @@ const Layout = ({ children }) => {
           <h3 className="nav-link">
             <Link to={`/posts`}>{`All Posts`}</Link>
           </h3>
+          <DarkModeToggle />
         </div>
       </div>
     </div>

@@ -42,6 +42,8 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          'gatsby-plugin-use-dark-mode',
+          `gatsby-plugin-sass`,
         ],
       },
     },

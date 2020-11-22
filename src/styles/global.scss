@@ -2,6 +2,45 @@ html {
   background-color: #e3f0f6;
 }
 
+body.light-mode {
+  background-color: #e3f0f6;
+  color: #333;
+  transition: background-color 0.3s ease;
+
+  .navbar {
+    background: white
+  }
+
+  .brand {
+    a {
+      color: black;
+    }
+  }
+  
+  .nav-link > a {
+    color: black;
+  }
+}
+
+body.dark-mode {
+  background-color: #1a1919;
+  color: #a8a8a8;
+
+  .navbar {
+    background: #373636
+  }
+
+  .brand {
+    a {
+      color: #a8a8a8;
+    }
+  }
+
+  .nav-link > a {
+    color: #a8a8a8;
+  }
+}
+
 .gatsby-highlight-code-line {
   background-color: #567db9b3;
   display: block;
@@ -53,10 +92,9 @@ html {
 }
 
 .subheading {
-  color: #343a40;
   margin: 1rem 0;
   padding-bottom: 0.5rem;
-  border-bottom: 3.5px solid #343a40;
+  border-bottom: 3.5px solid;
 }
 
 .post-heading {
@@ -83,7 +121,6 @@ html {
 
 .date {
   margin-right: 0.5rem;
-  color: #4a4a4a;
 }
 
 .tag {
