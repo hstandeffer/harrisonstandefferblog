@@ -15,7 +15,7 @@ In this post, we'll look at a few different ways to simplify your event handlers
 
 Let's look at a specific example where we would have a form for users to log in and to their account:
 
-```javascript
+```jsx
 import React from 'react'
 
 class Login extends React.Component {
@@ -54,7 +54,7 @@ We create the class by adding the constructor, where we also instantiate the sta
 
 The first logical way of handling this would be to make multiple event handlers for each input:
 
-```javascript
+```jsx
 class Login extends React.Component {
   constructor(props) {
     // ...
@@ -78,7 +78,7 @@ This works fine, but is obviously repetitive, and if you were to need more than 
 
 This can be greatly simplified by using only one event handler that can handle all of the input onChange methods. A very handy way of accomplishing this would look something like the following:
 
-```javascript
+```jsx
 handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
 }
@@ -87,7 +87,7 @@ handleChange = (event) => {
 
 ... and each input would simply call the same method:
 
-```javascript
+```jsx
 render() {
   return (
     <form>
@@ -110,7 +110,7 @@ render() {
 
 If you examine the inputs, you'll see that their "name" value matches the key's name in the initial state component we earlier defined in the constructor. In doing this, we are able to dynamically handle input changes to multiple different input elements, through the use of the square brackets around "event.target.name". If you were to type "johndoe@gmail.com" into the input with the "name" value of "email", the onChange handler that we define would get the following values passed to it:
 
-```javascript
+```jsx
 handleChange = (event) => {
   this.setState({ ["email"]: "johndoe@gmail.com" })
 }
@@ -125,7 +125,7 @@ So this new method only requires one event handler and that's great, but what if
 
 Its equivalent method for handling state is the [useState hook](https://reactjs.org/docs/hooks-state.html). We'll start out by converting our class component to a functional component with the useState hook instead to handle state and again handling this in the most logical way first:
 
-```javascript
+```jsx
 import React, { useState } from 'react'
 
 const Login = () => {
@@ -159,7 +159,7 @@ const Login = () => {
 <br/>
 
 You'll notice it's already been simplified greatly from our first implementation of the class components, and even the event handlers look a whole lot better, but we can still make some improvements. As before, we still have two separate event handlers for each different input, and while with two inputs it's not the worst thing ever, there is a way we can create more succint syntax with functional components by destructuring the event method within the onChange handler:
-```javascript
+```jsx
 // ...
 <form>
   <input

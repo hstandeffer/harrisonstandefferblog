@@ -25,14 +25,14 @@ const BlogIndex = ({ data, location }) => {
               <div className="flex">
                 <small className="date">{node.frontmatter.date}</small>
                 {tags ? tags.map((tag) => (
-                  <Link className="tag" key={tag}  to={`/tags/${tag}`}>{tag}</Link>
+                  <Link className="tags" key={tag}  to={`/tags/${tag}`}>{tag}</Link>
                 )) : null}
               </div>
             </header>
             <section>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+                  __html: node.frontmatter.excerpt || node.frontmatter.description || node.excerpt,
                 }}
               />
             </section>
@@ -63,6 +63,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            excerpt
             tags
           }
         }

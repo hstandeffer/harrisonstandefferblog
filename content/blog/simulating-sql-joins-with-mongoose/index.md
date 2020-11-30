@@ -1,5 +1,5 @@
 ---
-title: Referencing Documents in Other Collections with Mongoose
+title: Join Multiple Collections with Mongoose
 date: "2020-06-26T00:00:00Z"
 description: "How to simulate a SQL-like 'JOIN' in NoSQL databases with Mongoose's 'populate' method"
 tags: ['mongoose', 'react', 'express']
@@ -16,7 +16,7 @@ We'll demonstrate this through an example of a user on a blogging platform who c
 ### Defining the Mongoose Models
 
 Let's assume you have two Mongoose models, a Blog model:
-```javascript
+```jsx
 const mongoose = require('mongoose')
 const blogSchema = mongoose.Schema({
   title: String,
@@ -29,7 +29,7 @@ module.exports = mongoose.model('Blog', blogSchema)
 <br />
 
 ... and a User model:
-```javascript
+```jsx
 const mongoose = require('mongoose')
 const userSchema = mongoose.Schema({
   username: String,
@@ -46,7 +46,7 @@ After defining the Mongoose collection models, we'll move onto defining the API 
 ### Defining the Express Routers
 
 We first create an Express router, which allows us to define API routes to handle requests at each endpoint. We'll go ahead and define example GET and POST route handlers. For the blogs:
-```javascript
+```jsx
 const blogRouter = require('express').Router()
 const Blog = require('../models/blog')
 
@@ -74,7 +74,7 @@ module.exports = blogRouter
 <br />
 
 ... And for the users:
-```javascript
+```jsx
 const bcrypt = require('bcrypt')
 const usersRouter = require('express').Router()
 const User = require('../models/user')
@@ -129,7 +129,7 @@ After doing this, you can access your users API endpoint by navigating to the UR
 ### Populating the Blog Object
 
 The route is working as expected, but we'd ideally like to see information about each of the user's blogs as well, so we can get all of a user's information in one request. To do this, we will add a reference to the blog model to our userSchema:
-```javascript
+```jsx
 const userSchema = mongoose.Schema({
   // ...
   passwordHash: String,
@@ -145,7 +145,7 @@ const userSchema = mongoose.Schema({
 <br />
 
 ... We also add a reference to the user model to our blogSchema:
-```javascript
+```jsx
 const blogSchema = mongoose.Schema({
     // ...  
     url: String,
@@ -161,7 +161,7 @@ const blogSchema = mongoose.Schema({
 
 
 Now we are able to add a new blog post onto our user object whenever a new post is created. This will be handled by adding the following code to the blogRouter's post request we defined earlier:
-```javascript
+```jsx
 const User = require('../models/user') // highlight-line
 
 blogRouter.post('/', async (request, response) => {
@@ -188,7 +188,7 @@ blogRouter.post('/', async (request, response) => {
 Here, we first import the User model then extract the user's ID from the body of the request. Using Mongoose's findById method, we find the user who created the blog and add that user's ID to the new blog object to create a reference back to the user. Just like before, we then save the blog object, but this time we use the JavaScript [concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method to also add the newly-created blog object to the user object before finally saving the updated user.
 
 Now, **finally** we can make the last addition to the userRouter to populate the blogs of each user:
-```javascript
+```jsx
 usersRouter.get('/', async (request, response) => {
   // find all users but hide password
   const users = await User.find({}).select('-passwordHash')

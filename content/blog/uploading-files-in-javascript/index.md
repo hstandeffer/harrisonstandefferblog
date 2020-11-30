@@ -1,7 +1,8 @@
 ---
-title: Upload Files to AWS S3 with Multer
+title: Uploading Files in Javascript
 date: "2020-11-19T00:00:00Z"
-description: "Quickly upload files to an S3 bucket with React, Node and Express using the Multer file upload middleware"
+excerpt: "Quickly upload files to an S3 bucket with React, Node and Express using the Multer file upload middleware"
+description: Upload files in Javascript using Multer"
 tags: ['aws', 'react', 'express']
 ---
 
@@ -125,16 +126,16 @@ const ImageUpload = () => {
     setAvatar('') 
     setFirstName('')
     setLastName('')
-  }
 
-  return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <input name="firstName" value={firstName} onChange={({ target }) => setFirstName(target.value)} />
-      <input name="lastName" value={lastName} onChange={({ target }) => setLastName(target.value)} />
-      <input type="file" name="avatar" onChange={({ target }) => setAvatar(target.files[0]))} />
-      <button type="submit">Submit</button>
-    </form>
-  )
+    return (
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <input name="firstName" value={firstName} onChange={({ target }) => setFirstName(target.value)} />
+        <input name="lastName" value={lastName} onChange={({ target }) => setLastName(target.value)} />
+        <input type="file" name="avatar" onChange={({ target }) => setAvatar(target.files[0]))} />
+        <button type="submit">Submit</button>
+      </form>
+    )
+  }
 }
 ```
 <br />
