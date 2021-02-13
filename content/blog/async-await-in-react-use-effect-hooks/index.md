@@ -52,6 +52,6 @@ fetchData() //highlight-line
 ```
 <br />
 
-While it may seem strange to define a function and also call it in the hook, it's still intuitive enough, and allows me to be consistent in using async await throughout my entire application.
+### Conclusion
 
-<br />
+While it may seem strange to define a function and also call it in the hook, it's still intuitive enough, and allows me to be consistent in using async await throughout my entire application.

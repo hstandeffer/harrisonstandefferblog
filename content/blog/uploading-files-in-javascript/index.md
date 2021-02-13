@@ -2,7 +2,7 @@
 title: Uploading Files in Javascript
 date: "2020-11-19T00:00:00Z"
 excerpt: "Quickly upload files to an S3 bucket with React, Node and Express using the Multer file upload middleware"
-description: Upload files in Javascript using Multer"
+description: Upload files in Javascript using Multer
 tags: ['aws', 'react', 'express']
 ---
 
@@ -27,7 +27,7 @@ Open a new folder for the project and create a new node application using `npm i
 <br />
 
 We'll be using Express.js as it is the most common web framework for Node.js, and will also go ahead and download the other framework dependencies as well:
-```
+```shell
 npm install express aws-sdk body-parser multer multer-s3 dotenv
 ```
 <br />

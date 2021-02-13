@@ -1,5 +1,5 @@
 body.light-mode {
-  background-color: #e3f0f6;
+  background-color: #f5f7ff;
   color: #333;
   transition: background-color 0.3s ease;
 
@@ -30,6 +30,10 @@ body.dark-mode {
     a {
       color: #a8a8a8;
     }
+  }
+
+  hr {
+    background: #a8a8a8;
   }
 
   .nav-link > a {
@@ -128,4 +132,8 @@ body.dark-mode {
   padding: 0.35rem;
   border-radius: 4px;
   color: black
+}
+
+.footer {
+  margin-top: 3rem;
 }
