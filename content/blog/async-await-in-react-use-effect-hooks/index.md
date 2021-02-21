@@ -50,7 +50,6 @@ const fetchUsers = async () => {
 fetchData() //highlight-line
 }, [])
 ```
-<br />
 
 ### Conclusion
 
