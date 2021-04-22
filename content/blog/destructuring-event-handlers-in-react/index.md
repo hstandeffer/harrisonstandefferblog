@@ -3,6 +3,7 @@ title: Simplifying Input Event Handlers in React
 date: "2020-07-17T00:00:00Z"
 description: "Learn how to dynamically handle multiple input events with much cleaner, easy-to-read syntax using functional React components"
 tags: ['react']
+template: "post"
 ---
 
 ### Introduction

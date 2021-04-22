@@ -1,16 +1,18 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { rhythm } from "../utils/typography"
 
 const BlogIndex = ({ data, location }) => {
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.latest.edges
 
   return (
     <Layout location={location}>
-      <SEO title="Modern JavaScript/React Tips" />
-      <h2 className="subheading">Recent Posts</h2>
+      <SEO title="Modern Full Stack JavaScript/React Tips" />
+      <h2 className="subheading">Latest Posts</h2>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         const tags = node.frontmatter.tags
@@ -39,6 +41,21 @@ const BlogIndex = ({ data, location }) => {
           </article>
         )
       })}
+      <div style={{ marginTop: rhythm(2) }}>
+        <h2 className="subheading">Projects</h2>
+        <h3 className="post-heading">
+          <Link className="post-link" to="/squigcoffee">
+            Squig Coffee
+          </Link>
+        </h3>
+        <p>An easy way to discover new high-quality coffee.</p>
+      </div>
+      <hr
+        style={{
+          marginBottom: rhythm(2),
+        }}
+      />
+      <Bio />
     </Layout>
   )
 }
@@ -47,12 +64,11 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    latest: allMarkdownRemark(
+      limit: 4
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { template: { eq: "post" } } }
+    ) {
       edges {
         node {
           excerpt

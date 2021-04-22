@@ -3,6 +3,7 @@ title: Using git subtree to Push a Subfolder to Heroku
 date: "2021-02-20T20:43:27"
 description: "A simple way to push a specific folder when Git is initialized in the parent folder"
 tags: ['git']
+template: "post"
 ---
 
 ### Introduction

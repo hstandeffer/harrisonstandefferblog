@@ -3,9 +3,9 @@ module.exports = {
     title: `Harrison Standeffer`,
     author: {
       name: `Harrison Standeffer`,
-      summary: `Sharing what I've learned in modern web development. Focusing on React, Node, and other modern frameworks.`,
+      summary: `Sharing what I've learned in modern full stack web development. I enjoy using React, Node/Express, Laravel, and other modern frameworks.`,
     },
-    description: `Guides and Resources for Learning Modern JavaScript and Web Development`,
+    description: `Guides and Resources for Learning Practical JavaScript and Full Stack Web Development`,
     siteUrl: `https://www.harrisonstandeffer.com`,
   },
   plugins: [
@@ -21,6 +21,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/projects`,
+        name: `projects`,
       },
     },
     {

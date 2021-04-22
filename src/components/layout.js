@@ -15,7 +15,10 @@ const Layout = ({ children }) => {
         </div>
         <div className="flex-space-between">
           <p className="nav-link">
-            <Link to={`/posts`}>{`All Posts`}</Link>
+            <Link to={`/posts`}>{`Posts`}</Link>
+          </p>
+          <p className="nav-link">
+            <Link to={`/projects`}>{`Projects`}</Link>
           </p>
           <DarkModeToggle />
         </div>

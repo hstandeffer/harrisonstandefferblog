@@ -3,6 +3,7 @@ title: How to Use Async Await with React's useEffect Hook
 date: "2020-11-21T20:43:27"
 description: "Make API calls or perform other asynchronous actions inside the React useEffect hook"
 tags: ['react']
+template: "post"
 ---
 
 ### Introduction

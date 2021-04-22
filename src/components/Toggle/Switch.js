@@ -2,6 +2,7 @@ import React from 'react'
 import './Switch.css'
 
 const Switch = ({ isOn, handleToggle, onColor  }) => {
+  console.log(isOn)
   return (
     <>
       <input
@@ -12,17 +13,18 @@ const Switch = ({ isOn, handleToggle, onColor  }) => {
         type="checkbox"
       />
       <label
-        style={{ background: isOn && onColor }}
+        style={{ onColor }}
         className="react-switch-label"
         htmlFor={`react-switch-new`}
       >
-        <div style={{ marginLeft: `2px`}}>
-          <span aria-label="moon" role="img">🌙</span>
+      <div style={{ marginLeft: `1rem` }}>
+        { !isOn ?
+            <span aria-label="moon" role="img">🌙</span>
+          :
+            <span aria-label="sun" role="img">☀️</span>
+        }
         </div>
-        <div style={{ marginRight: `2px`}}>
-          <span aria-label="sun" role="img">☀️</span>
-        </div>
-        <span className={`react-switch-button`} />
+        {/* <span className={`react-switch-button`} /> */}
       </label>
     </>
   );

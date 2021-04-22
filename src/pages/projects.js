@@ -4,14 +4,14 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const BlogIndex = ({ data, location }) => {
-  const posts = data.posts.edges
+const Projects = ({ data, location }) => {
+  const projects = data.projects.edges
 
   return (
     <Layout location={location}>
-      <SEO title="All posts" />
-      <h2 className="subheading">All Posts</h2>
-      {posts.map(({ node }) => {
+      <SEO title="All Projects" />
+      <h2 className="subheading">All Projects</h2>
+      {projects.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article key={node.fields.slug}>
@@ -37,13 +37,14 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default Projects
 
 export const pageQuery = graphql`
   query {
-    posts: allMarkdownRemark(
+    projects: allMarkdownRemark(
+      limit: 4
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { template: { eq: "post" } } }
+      filter: { frontmatter: { template: { eq: "project" } } }
     ) {
       edges {
         node {

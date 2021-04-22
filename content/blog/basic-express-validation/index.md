@@ -3,6 +3,7 @@ title: Validate User Input Data with express-validator
 date: "2021-02-13T00:00:00Z"
 description: Sanitize and validate user-submitted inputs and return validation errors in Express
 tags: ['express']
+template: "post"
 ---
 
 ### Introduction

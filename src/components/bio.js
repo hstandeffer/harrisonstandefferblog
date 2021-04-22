@@ -32,11 +32,10 @@ const Bio = () => {
         marginBottom: rhythm(0.5),
       }}
     >
-      <p>
-        Development Blog by <strong>{author.name}</strong>
-        <br />
+      <div>
+        <p>Development Blog by <strong>{author.name}</strong></p>
         {author.summary}
-      </p>
+      </div>
     </div>
   )
 }

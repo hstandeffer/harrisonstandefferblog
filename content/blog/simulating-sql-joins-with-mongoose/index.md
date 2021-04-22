@@ -3,6 +3,7 @@ title: Join Multiple Collections with Mongoose
 date: "2020-06-26T00:00:00Z"
 description: "How to simulate a SQL-like 'JOIN' in NoSQL databases with Mongoose's 'populate' method"
 tags: ['mongoose', 'react', 'express']
+template: "post"
 ---
 
 ### Introduction

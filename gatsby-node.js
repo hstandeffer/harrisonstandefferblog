@@ -5,12 +5,14 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
   const tagTemplate = path.resolve(`./src/templates/tags.js`)
+  const projectTemplate = path.resolve(`./src/templates/project.js`)
+
   const result = await graphql(
     `
       {
-        postsRemark: allMarkdownRemark(
+        allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 2000
         ) {
@@ -22,6 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 title
                 tags
+                template
               }
             }
           }
@@ -40,7 +43,9 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = result.data.postsRemark.edges
+  const all = result.data.allMarkdownRemark.edges
+  const posts = all.filter((post) => post.node.frontmatter.template === 'post')
+  const projects = all.filter((project) => project.node.frontmatter.template === 'project')
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -48,12 +53,22 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: post.node.fields.slug,
-      component: blogPost,
+      component: blogPostTemplate,
       context: {
         slug: post.node.fields.slug,
         previous,
         next,
       },
+    })
+  })
+
+  projects.forEach((project) => {
+    createPage({
+      path: project.node.fields.slug,
+      component: projectTemplate,
+      context: {
+        slug: project.node.fields.slug
+      }
     })
   })
 
@@ -74,11 +89,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
     createNodeField({
-      name: `slug`,
       node,
-      value,
+      name: `slug`,
+      value: slug,
     })
   }
 }
